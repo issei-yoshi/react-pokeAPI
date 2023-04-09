@@ -10,10 +10,20 @@ function App() {
   useEffect(() => {
     const fetchPokemonData = async () => {
       let res = await getAllPokemon(initialURL);
+      loadPokemon(res.results);
       setLoading(false);
     };
     fetchPokemonData();
   }, []);
+
+  const loadPokemon = (data) => {
+    let _pokemonData = Promise.all(
+      data.map((pokemon) => {
+        let pokemonRecord = getPokemon(pokemon.url);
+        return pokemonRecord;
+      })
+    );
+  };
 
   return (
     <div className="App">
