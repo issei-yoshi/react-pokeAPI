@@ -32,7 +32,13 @@ function App() {
       { loading ? (
         <h1>Loading...</h1>
       ) : (
-        <h1>Success to get PokeDatas</h1>
+        <>
+          <div className='pokemonCardContainer'>
+            {pokemonData.map((pokemon, i) => {
+              return <Card key={i} pokemon={pokemon} />;
+            })}
+          </div>
+        </>
       )}
     </div>
   );
