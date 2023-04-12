@@ -29,6 +29,14 @@ function App() {
     setPokemonData(_pokemonData);
   };
 
+  const handleNextPage = () => {
+
+  };
+
+  const handlePrevPage = () => {
+
+  };
+
   return (
     <>
       <Navbar />
