@@ -9,11 +9,13 @@ function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
+  const [nextURL, setNextURL] = useState("");
 
   useEffect(() => {
     const fetchPokemonData = async () => {
       let res = await getAllPokemon(initialURL);
       loadPokemon(res.results);
+      setNextURL(res.next);
       setLoading(false);
     };
     fetchPokemonData();
@@ -29,8 +31,12 @@ function App() {
     setPokemonData(_pokemonData);
   };
 
-  const handleNextPage = () => {
-
+  const handleNextPage = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextURL);
+    await loadPokemon(data.results);
+    setNextURL(data.next);
+    setLoading(false);
   };
 
   const handlePrevPage = () => {
