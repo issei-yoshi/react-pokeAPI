@@ -67,8 +67,8 @@ function App() {
               })}
             </div>
             <div className='btn'>
-              <buttun onClick={handlePrevPage}>Prev</buttun>
-              <buttun onClick={handleNextPage}>Next</buttun>
+              <button onClick={handlePrevPage}>Prev</button>
+              <button onClick={handleNextPage}>Next</button>
             </div>
           </>
         )}
